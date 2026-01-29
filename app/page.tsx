@@ -5,69 +5,36 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import LoadingScreen from "@/components/LoadingScreen";
-import LanguageToggle from "@/components/LanguageToggle";
 import VenueMap from "@/components/VenueMap";
 import Countdown from "@/components/Countdown";
 
-type Language = "hu" | "ro";
-
 const translations = {
-  hu: {
-    invited: "Meghívó",
-    subtitle: "Esküvői meghívó",
-    ourWedding: "Esküvőnk",
-    together: "",
-    invite: "Szeretettel meghívunk az esküvőnkre 2026. május 8-án, ünnepeljük együtt életünk egyik legszebb napját!",
-    names: "Hanna & Dávid",
-    when: "Időpont",
-    date: "2026. május 8.",
-    time: "16:00",
-    where: "Helyszín",
-    venue: "Panorama Boutique Hotel",
-    location: "Sepsiszentgyörgy",
-    weddingParty: "Násznagyok",
-    contact: "Kapcsolat",
-    contactText: "Kérjük, erősítsd meg részvételed telefonon:",
-    rsvpDeadline: "Részvételi szándékotokat kérjük jelezzétek április 24-ig az alábbi telefonszámok egyikén.",
-    hanna: "Hanna",
-    david: "Dávid",
-    waitingFor: "Szeretettel várunk!",
-    program: "Program",
-    ceremony: "Egyházi szertartás",
-    dinner: "Ünnepi ebéd",
-    firstDance: "Nyitótánc",
-    cake: "Torta",
-    physicalInvitations: "A fizikai meghívók is úton vannak már!",
-    physicalInvitationsSubtext: "Csak idő kérdése és kezetekben foghatjátok.",
-  },
-  ro: {
-    invited: "Invitație",
-    subtitle: "Invitație de nuntă",
-    ourWedding: "Nunta Noastră",
-    together: "",
-    invite: "Vă invităm cu drag să sărbătoriți împreună cu noi pe 8 mai 2026, când ne vom uni viețile și ne vom jura credință veșnică unul altuia.",
-    names: "Hanna & Dávid",
-    when: "Data",
-    date: "8 mai 2026",
-    time: "16:00",
-    where: "Locația",
-    venue: "Panorama Boutique Hotel",
-    location: "Sfântu Gheorghe",
-    weddingParty: "Nașii noștri",
-    contact: "Contact",
-    contactText: "Vă rugăm să confirmați participarea telefonic:",
-    rsvpDeadline: "Vă rugăm să confirmați participarea până cel târziu pe 24 aprilie la unul dintre numerele de telefon:",
-    hanna: "Hanna",
-    david: "Dávid",
-    waitingFor: "Vă așteptăm cu drag!",
-    program: "Program",
-    ceremony: "Ceremonia religioasă",
-    dinner: "Servirea mesei",
-    firstDance: "Dansul mirilor",
-    cake: "Tort",
-    physicalInvitations: "Invitațiile fizice sunt deja în drum!",
-    physicalInvitationsSubtext: "Este doar o chestiune de timp până le veți avea în mâini.",
-  },
+  invited: "Meghívó",
+  subtitle: "Esküvői meghívó",
+  ourWedding: "Esküvőnk",
+  together: "",
+  invite: "Szeretettel meghívunk a polgári esküvőnkre 2026. április 25-én, ünnepeljük együtt életünk egyik legszebb napját!",
+  names: "Hanna & Dávid",
+  when: "Időpont",
+  date: "2026. április 25.",
+  time: "14:00",
+  where: "Helyszín",
+  venue: "Kiskőrösi út 5",
+  location: "Kecskemét",
+  weddingParty: "Násznagyok",
+  contact: "Kapcsolat",
+  contactText: "Kérjük, erősítsd meg részvételed telefonon:",
+  rsvpDeadline: "Részvételi szándékotokat kérjük jelezzétek április 4-ig az alábbi telefonszámok egyikén.",
+  hanna: "Hanna",
+  david: "Dávid",
+  waitingFor: "Szeretettel várunk!",
+  program: "Program",
+  ceremony: "Egyházi szertartás",
+  dinner: "Ünnepi ebéd",
+  firstDance: "Nyitótánc",
+  cake: "Torta",
+  physicalInvitations: "A fizikai meghívók is úton vannak már!",
+  physicalInvitationsSubtext: "Csak idő kérdése és kezetekben foghatjátok.",
 };
 
 // Parallax Background Component
@@ -212,7 +179,6 @@ const ElegantDivider = () => (
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const [language, setLanguage] = useState<Language>("hu");
   const [hasScrolled, setHasScrolled] = useState(false);
   
   const { scrollYProgress } = useScroll();
@@ -235,13 +201,13 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const t = translations[language];
+  const t = translations;
 
   return (
     <>
       <AnimatePresence mode="wait">
         {loading ? (
-          <LoadingScreen key="loading" language={language} />
+          <LoadingScreen key="loading" />
         ) : (
           <motion.main
             key="main"
@@ -250,9 +216,6 @@ export default function Home() {
             transition={{ duration: 1.2, delay: 0.2, ease: "easeInOut" }}
             className="min-h-screen relative bg-transparent"
           >
-            {/* Language Toggle */}
-            <LanguageToggle language={language} setLanguage={setLanguage} />
-
             {/* Floating Golden Sparkles */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
               {[...Array(12)].map((_, i) => (
@@ -417,40 +380,28 @@ export default function Home() {
                   className="max-w-3xl mx-auto px-4"
                 >
                   <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
-                    {language === "hu" ? (
-                      <>
-                        {/* Mobile version */}
-                        <span className="block sm:hidden">
-                          Szeretettel meghívunk az{" "}
-                          <br />
-                          esküvőnkre{" "}
-                          <span className="text-brown font-bold">2026. május 8-án</span>,{" "}
-                          <br />
-                          ünnepeljük együtt életünk{" "}
-                          <br />
-                          egyik legszebb napját!
-                        </span>
-                        {/* Desktop version */}
-                        <span className="hidden sm:block">
-                          Szeretettel meghívunk az esküvőnkre{" "}
-                          <br />
-                          <span className="text-brown font-bold">
-                            2026. május 8-án
-                          </span>
-                          , ünnepeljük együtt{" "}
-                          <br />
-                          életünk egyik legszebb napját!
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        Vă invităm cu drag să sărbătoriți împreună cu noi pe{" "}
-                        <span className="text-brown font-bold">
-                          8 mai 2026
-                        </span>
-                        , când ne vom uni viețile și ne vom jura credință veșnică unul altuia.
-                      </>
-                    )}
+                    {/* Mobile version */}
+                    <span className="block sm:hidden">
+                      Szeretettel meghívunk a{" "}
+                      <br />
+                      polgári esküvőnkre{" "}
+                      <span className="text-brown font-bold">2026. április 25-én</span>,{" "}
+                      <br />
+                      ünnepeljük együtt életünk{" "}
+                      <br />
+                      egyik legszebb napját!
+                    </span>
+                    {/* Desktop version */}
+                    <span className="hidden sm:block">
+                      Szeretettel meghívunk a polgári esküvőnkre{" "}
+                      <br />
+                      <span className="text-brown font-bold">
+                        2026. április 25-én
+                      </span>
+                      , ünnepeljük együtt{" "}
+                      <br />
+                      életünk egyik legszebb napját!
+                    </span>
                   </p>
                 </motion.div>
               </motion.div>
@@ -482,12 +433,12 @@ export default function Home() {
             <ElegantDivider />
 
             {/* Countdown Section */}
-            <Countdown language={language} />
+            <Countdown />
 
             <ElegantDivider />
 
             {/* Date & Time Section */}
-            <section className="relative py-12 px-4 overflow-hidden">
+            <section className="relative px-4 overflow-hidden">
               {/* Background Image */}
               <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
@@ -501,8 +452,8 @@ export default function Home() {
                 />
               </div>
               
-              <div className="max-w-5xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <div className="max-w-3xl mx-auto relative z-10 flex flex-col justify-center pt-8 md:pt-12 pb-8 md:pb-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                   {/* Date */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -530,7 +481,7 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-center"
                   >
-                    <h3 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-2 sm:mb-[30px] font-bold drop-shadow-2xl uppercase">
+                    <h3 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-2 sm:mb-6 font-bold drop-shadow-2xl uppercase">
                       {t.where}
                     </h3>
                     <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-1 sm:mb-3 drop-shadow-xl">
@@ -606,7 +557,7 @@ export default function Home() {
             <ElegantDivider />
 
             {/* Wedding Party Section */}
-            <section className="relative py-6 px-4 overflow-hidden">
+            <section className="relative px-4 overflow-hidden">
               {/* Background Image */}
               <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
@@ -619,40 +570,15 @@ export default function Home() {
                 />
               </div>
               
-              <div className="max-w-5xl mx-auto text-center relative z-10 px-4 w-full">
+              <div className="max-w-5xl mx-auto text-center relative z-10 px-4 w-full flex flex-col justify-center pt-8 md:pt-12 pb-6 md:pb-8">
                 {/* Parents Section */}
                 <motion.h3
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-4 font-bold drop-shadow-2xl uppercase break-words"
+                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-4 md:mb-6 font-bold drop-shadow-2xl uppercase break-words"
                 >
-                  {language === "hu" ? "Szüleink" : "Părinții noștri"}
-                </motion.h3>
-                
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-16 mb-4 sm:mb-8"
-                >
-                  <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-0 sm:mb-3 drop-shadow-xl text-center w-full sm:w-auto break-words px-2">
-                    Vida István {language === "hu" ? "és" : "și"} Angéla
-                  </p>
-                  <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-0 sm:mb-3 drop-shadow-xl text-center w-full sm:w-auto break-words px-2">
-                    Simó Attila {language === "hu" ? "és" : "și"} Andrea
-                  </p>
-                </motion.div>
-
-                {/* Wedding Party */}
-                <motion.h3
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-4 font-bold drop-shadow-2xl uppercase break-words"
-                >
-                  {t.weddingParty}
+                  Szüleink
                 </motion.h3>
                 
                 <motion.div
@@ -663,10 +589,10 @@ export default function Home() {
                   className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-16"
                 >
                   <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-0 sm:mb-3 drop-shadow-xl text-center w-full sm:w-auto break-words px-2">
-                    Vida Dániel {language === "hu" ? "és" : "și"} Bianka
+                    Vida István és Angéla
                   </p>
                   <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-0 sm:mb-3 drop-shadow-xl text-center w-full sm:w-auto break-words px-2">
-                    Kovács Hunor {language === "hu" ? "és" : "și"} Andrea
+                    Simó Attila és Andrea
                   </p>
                 </motion.div>
               </div>
@@ -683,7 +609,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <VenueMap language={language} />
+                  <VenueMap />
                 </motion.div>
               </div>
             </section>
@@ -691,7 +617,7 @@ export default function Home() {
             <ElegantDivider />
 
             {/* Contact Section */}
-            <section className="relative py-12 px-4 overflow-hidden">
+            <section className="relative px-4 overflow-hidden">
               {/* Background Image */}
               <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
@@ -704,7 +630,7 @@ export default function Home() {
                 />
               </div>
               
-              <div className="max-w-5xl mx-auto text-center relative z-10">
+              <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col justify-center pt-6 md:pt-10 pb-8 md:pb-12">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -715,30 +641,22 @@ export default function Home() {
                   </h3>
                   
                   <p className="font-[family-name:var(--font-body)] text-2xl md:text-2xl lg:text-3xl text-white mb-6 mx-auto leading-tight text-center px-4 drop-shadow-xl max-w-3xl">
-                    {language === "hu" ? (
-                      <>
-                        {/* Mobile version */}
-                        <span className="block sm:hidden">
-                          Részvételi szándékotokat{" "}
-                          <br />
-                          kérjük jelezzétek{" "}
-                          <br />
-                          <span className="font-bold">április 24</span>-ig az alábbi{" "}
-                          <br />
-                          telefonszámok egyikén.
-                        </span>
-                        {/* Desktop version */}
-                        <span className="hidden sm:block">
-                          Részvételi szándékotokat kérjük jelezzétek{" "}
-                          <br />
-                          <span className="font-bold">április 24</span>-ig az alábbi telefonszámok egyikén.
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        Vă rugăm să confirmați participarea până cel târziu pe <span className="font-bold">24 aprilie</span> la unul dintre numerele de telefon:
-                      </>
-                    )}
+                    {/* Mobile version */}
+                    <span className="block sm:hidden">
+                      Részvételi szándékotokat{" "}
+                      <br />
+                      kérjük jelezzétek{" "}
+                      <br />
+                      <span className="font-bold">április 4</span>-ig az alábbi{" "}
+                      <br />
+                      telefonszámok egyikén.
+                    </span>
+                    {/* Desktop version */}
+                    <span className="hidden sm:block">
+                      Részvételi szándékotokat kérjük jelezzétek{" "}
+                      <br />
+                      <span className="font-bold">április 4</span>-ig az alábbi telefonszámok egyikén.
+                    </span>
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 sm:gap-x-6 sm:gap-y-3 max-w-2xl mx-auto">

@@ -2,18 +2,7 @@
 
 import { motion } from "framer-motion";
 
-type Language = "hu" | "ro";
-
-interface LoadingScreenProps {
-  language: Language;
-}
-
-const loadingText = {
-  hu: "Meghívó megnyitása",
-  ro: "Deschiderea invitației",
-};
-
-export default function LoadingScreen({ language }: LoadingScreenProps) {
+export default function LoadingScreen() {
   return (
     <motion.div
       exit={{ opacity: 0 }}
@@ -62,7 +51,7 @@ export default function LoadingScreen({ language }: LoadingScreenProps) {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <h2 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl text-brown mb-4">
-            {loadingText[language]}
+            Meghívó megnyitása
           </h2>
           
           {/* Animated Dots */}

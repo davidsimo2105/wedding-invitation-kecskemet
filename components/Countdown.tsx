@@ -4,23 +4,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
-type Language = "hu" | "ro";
-
 const translations = {
-  hu: {
-    countdown: "Visszaszámlálás",
-    days: "Nap",
-    hours: "Óra",
-    minutes: "Perc",
-    seconds: "Másodperc",
-  },
-  ro: {
-    countdown: "Numărătoare inversă",
-    days: "Zile",
-    hours: "Ore",
-    minutes: "Minute",
-    seconds: "Secunde",
-  },
+  countdown: "Visszaszámlálás",
+  days: "Nap",
+  hours: "Óra",
+  minutes: "Perc",
+  seconds: "Másodperc",
 };
 
 // Baby's Breath Flower Component
@@ -61,7 +50,7 @@ const BabysBreath = ({ className = "", scale = 1 }: { className?: string; scale?
   </svg>
 );
 
-export default function Countdown({ language }: { language: Language }) {
+export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -69,10 +58,11 @@ export default function Countdown({ language }: { language: Language }) {
     seconds: 0,
   });
 
-  const t = translations[language];
+  const t = translations;
 
   useEffect(() => {
-    const weddingDate = new Date('2026-05-08T16:00:00');
+    // 2026.04.25 2pm Budapest time (UTC+2 in April due to daylight saving)
+    const weddingDate = new Date('2026-04-25T14:00:00+02:00');
     
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -112,25 +102,12 @@ export default function Countdown({ language }: { language: Language }) {
           viewport={{ once: true }}
           className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-center text-brown mb-12 font-bold uppercase leading-tight px-2"
         >
-          {language === "hu" ? (
-            <>
-              <span className="hidden sm:inline">VISSZASZÁMLÁLÁS</span>
-              <span className="sm:hidden">
-                VISSZA-
-                <br />
-                SZÁMLÁLÁS
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="hidden sm:inline">NUMĂRĂTOARE INVERSĂ</span>
-              <span className="sm:hidden">
-                NUMĂRĂTOARE
-                <br />
-                INVERSĂ
-              </span>
-            </>
-          )}
+          <span className="hidden sm:inline">VISSZASZÁMLÁLÁS</span>
+          <span className="sm:hidden">
+            VISSZA-
+            <br />
+            SZÁMLÁLÁS
+          </span>
         </motion.h3>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-2">
