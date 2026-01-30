@@ -14,16 +14,16 @@ export default function VenueMap() {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
       className="w-full max-w-3xl mx-auto space-y-6"
     >
       {/* Location Info */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         className="text-center mb-10"
       >
         <p className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl text-brown mb-4 font-bold">
@@ -72,8 +72,8 @@ export default function VenueMap() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className="flex justify-center"
       >
         <motion.a

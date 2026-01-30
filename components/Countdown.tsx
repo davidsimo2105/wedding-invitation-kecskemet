@@ -99,7 +99,8 @@ export default function Countdown() {
         <motion.h3
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-center text-brown mb-12 font-bold uppercase leading-tight px-2"
         >
           <span className="hidden sm:inline">VISSZASZÁMLÁLÁS</span>
@@ -116,8 +117,8 @@ export default function Countdown() {
               key={unit.label}
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="text-center"
             >
               <motion.div

@@ -158,13 +158,16 @@ const FloralGarland = () => (
   </div>
 );
 
+// Smooth animation config (cubic-bezier)
+const smoothEase = [0.25, 0.1, 0.25, 1] as const;
+
 // Elegant Divider
 const ElegantDivider = () => (
   <motion.div 
-    initial={{ scaleX: 0 }}
-    whileInView={{ scaleX: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1 }}
+    initial={{ scaleX: 0, opacity: 0 }}
+    whileInView={{ scaleX: 1, opacity: 1 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 1.2, ease: smoothEase }}
     className="flex items-center justify-center my-8 w-full max-w-2xl mx-auto gap-4"
   >
     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-brown/40 to-brown/40" />
@@ -213,7 +216,7 @@ export default function Home() {
             key="main"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeInOut" }}
+            transition={{ duration: 1.2, delay: 0.2, ease: smoothEase }}
             className="min-h-screen relative bg-transparent"
           >
             {/* Floating Golden Sparkles */}
@@ -382,12 +385,11 @@ export default function Home() {
                   <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
                     {/* Mobile version */}
                     <span className="block sm:hidden">
-                      Szeretettel meghívunk a{" "}
+                      Szeretettel meghívunk a polgári
                       <br />
-                      polgári esküvőnkre{" "}
-                      <span className="text-brown font-bold">2026. április 25-én</span>,{" "}
+                      esküvőnkre <span className="text-brown font-bold">2026. április 25-én</span>,
                       <br />
-                      ünnepeljük együtt életünk{" "}
+                      ünnepeljük együtt életünk
                       <br />
                       egyik legszebb napját!
                     </span>
@@ -438,7 +440,7 @@ export default function Home() {
             <ElegantDivider />
 
             {/* Date & Time Section */}
-            <section className="relative px-4 overflow-hidden">
+            <section className="relative py-12 px-4 overflow-hidden">
               {/* Background Image */}
               <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
@@ -452,23 +454,23 @@ export default function Home() {
                 />
               </div>
               
-              <div className="max-w-3xl mx-auto relative z-10 flex flex-col justify-center pt-8 md:pt-12 pb-8 md:pb-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+              <div className="max-w-5xl mx-auto relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                   {/* Date */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, ease: smoothEase }}
                     className="text-center"
                   >
                     <h3 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-2 sm:mb-6 font-bold drop-shadow-2xl uppercase">
                       {t.when}
                     </h3>
-                    <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-1 sm:mb-3 drop-shadow-xl">
+                    <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-1 sm:mb-2 drop-shadow-xl">
                       {t.date}
                     </p>
-                    <p className="font-[family-name:var(--font-body)] text-xl text-white drop-shadow-lg">
+                    <p className="font-[family-name:var(--font-body)] text-xl text-white drop-shadow-lg -mb-1 md:-mb-2">
                       {t.time}
                     </p>
                   </motion.div>
@@ -477,17 +479,17 @@ export default function Home() {
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, delay: 0.2, ease: smoothEase }}
                     className="text-center"
                   >
                     <h3 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-2 sm:mb-6 font-bold drop-shadow-2xl uppercase">
                       {t.where}
                     </h3>
-                    <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-1 sm:mb-3 drop-shadow-xl">
+                    <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-1 sm:mb-2 drop-shadow-xl">
                       {t.venue}
                     </p>
-                    <p className="font-[family-name:var(--font-body)] text-xl text-white drop-shadow-lg">
+                    <p className="font-[family-name:var(--font-body)] text-xl text-white drop-shadow-lg -mb-1 md:-mb-2">
                       {t.location}
                     </p>
                   </motion.div>
@@ -503,17 +505,17 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, ease: smoothEase }}
                   className="space-y-6 text-center"
                 >
-                  <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-light-brown leading-relaxed">
+                  <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
                     Ez az alkalom számunkra különösen fontos, hiszen a szertartás után Hanna hamarosan Brassóba költözik, így ez a nap egyben lehetőség arra is, hogy szeretteinkkel és barátainkkal együtt legyünk, beszélgessünk, és elköszönjünk.
                   </p>
-                  <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-light-brown leading-relaxed">
+                  <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
                     A találkozó kötetlen, batyus jellegű lesz, ezért ha szívesen hoznátok egy kis sütit, pogácsát vagy bármilyen finomságot, azt örömmel fogadjuk.
                   </p>
-                  <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-light-brown leading-relaxed">
+                  <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
                     A közös ünneplést birkapörkölt, szendvicsek, pizzaparti, játékok és tánc teszik még emlékezetesebbé.
                   </p>
                 </motion.div>
@@ -528,7 +530,8 @@ export default function Home() {
                 <motion.h3
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: smoothEase }}
                   className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-center text-brown mb-16 font-bold uppercase"
                 >
                   {t.program}
@@ -548,8 +551,8 @@ export default function Home() {
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: item.delay }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.8, delay: item.delay, ease: smoothEase }}
                       className="flex items-start gap-6 pl-4 sm:pl-8"
                     >
                       <div className="flex-shrink-0 flex items-center h-full pt-2">
@@ -585,7 +588,7 @@ export default function Home() {
             <ElegantDivider />
 
             {/* Wedding Party Section */}
-            <section className="relative px-4 overflow-hidden">
+            <section className="relative py-6 px-4 overflow-hidden">
               {/* Background Image */}
               <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
@@ -598,13 +601,14 @@ export default function Home() {
                 />
               </div>
               
-              <div className="max-w-5xl mx-auto text-center relative z-10 px-4 w-full flex flex-col justify-center pt-8 md:pt-12 pb-6 md:pb-8">
+              <div className="max-w-5xl mx-auto text-center relative z-10 px-4 w-full pt-5 md:pt-6">
                 {/* Parents Section */}
                 <motion.h3
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-4 md:mb-6 font-bold drop-shadow-2xl uppercase break-words"
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: smoothEase }}
+                  className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-4 font-bold drop-shadow-2xl uppercase break-words"
                 >
                   Szüleink
                 </motion.h3>
@@ -612,9 +616,9 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-16"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, ease: smoothEase }}
+                  className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-16 mb-2 sm:mb-4"
                 >
                   <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white font-semibold mb-0 sm:mb-3 drop-shadow-xl text-center w-full sm:w-auto break-words px-2">
                     Vida István és Angéla
@@ -634,8 +638,8 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: smoothEase }}
                 >
                   <VenueMap />
                 </motion.div>
@@ -645,7 +649,7 @@ export default function Home() {
             <ElegantDivider />
 
             {/* Contact Section */}
-            <section className="relative px-4 overflow-hidden">
+            <section className="relative pt-9 pb-10 px-4 overflow-hidden">
               {/* Background Image */}
               <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
@@ -658,11 +662,12 @@ export default function Home() {
                 />
               </div>
               
-              <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col justify-center pt-6 md:pt-10 pb-8 md:pb-12">
+              <div className="max-w-5xl mx-auto text-center relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: smoothEase }}
                 >
                   <h3 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl text-white mb-8 font-bold drop-shadow-2xl uppercase">
                     {t.contact}
@@ -692,8 +697,8 @@ export default function Home() {
                       href="tel:+36704096591"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.8, ease: smoothEase }}
                       className="text-center block group"
                     >
                       <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white mb-2 font-bold group-hover:scale-105 transition-transform duration-300 inline-block drop-shadow-xl">
@@ -708,8 +713,8 @@ export default function Home() {
                       href="tel:+40736374567"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.8, delay: 0.2, ease: smoothEase }}
                       className="text-center block group"
                     >
                       <p className="font-[family-name:var(--font-body)] text-2xl md:text-3xl text-white mb-2 font-bold group-hover:scale-105 transition-transform duration-300 inline-block drop-shadow-xl">
@@ -727,10 +732,10 @@ export default function Home() {
             {/* Final Message */}
             <section className="relative py-20 px-4">
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.2, ease: smoothEase }}
                 className="text-center max-w-2xl mx-auto"
               >
                 {/* Decorative flourish */}
@@ -752,12 +757,12 @@ export default function Home() {
             </section>
 
             {/* Physical Invitations Section */}
-            <section className="relative py-6 px-4 bg-brown">
+            <section className="relative py-4 px-4 bg-brown">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 1, ease: smoothEase }}
                 className="text-center max-w-lg mx-auto"
               >
                 <p className="font-[family-name:var(--font-body)] text-sm sm:text-base md:text-lg text-white font-semibold mb-0.5 leading-tight">
