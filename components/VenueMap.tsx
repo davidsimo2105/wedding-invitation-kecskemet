@@ -6,9 +6,9 @@ import { useState } from "react";
 export default function VenueMap() {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
-  // Kiskőrösi út 5, Kecskemét
-  const mapUrl = "https://maps.google.com/maps?q=Kiskőrösi+út+5+Kecskemét&hl=en&z=16&output=embed";
-  const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Kiskőrösi+út+5,Kecskemét";
+  // Map points to Hit gyülekezete Kecskemét; displayed text stays Kiskőrösi út 5, Kecskemét
+  const mapUrl = "https://maps.google.com/maps?q=Hit+gyülekezete+Kecskemét&hl=en&z=16&output=embed";
+  const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Hit+gyülekezete+Kecskemét";
 
   return (
     <motion.div

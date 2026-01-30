@@ -497,6 +497,31 @@ export default function Home() {
 
             <ElegantDivider />
 
+            {/* Info / Tudnivalók Section */}
+            <section className="relative py-12 px-4">
+              <div className="max-w-5xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-6 text-center"
+                >
+                  <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-light-brown leading-relaxed">
+                    Ez az alkalom számunkra különösen fontos, hiszen a szertartás után Hanna hamarosan Brassóba költözik, így ez a nap egyben lehetőség arra is, hogy szeretteinkkel és barátainkkal együtt legyünk, beszélgessünk, és elköszönjünk.
+                  </p>
+                  <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-light-brown leading-relaxed">
+                    A találkozó kötetlen, batyus jellegű lesz, ezért ha szívesen hoznátok egy kis sütit, pogácsát vagy bármilyen finomságot, azt örömmel fogadjuk.
+                  </p>
+                  <p className="font-[family-name:var(--font-body)] text-xl md:text-2xl text-light-brown leading-relaxed">
+                    A közös ünneplést birkapörkölt, szendvicsek, pizzaparti, játékok és tánc teszik még emlékezetesebbé.
+                  </p>
+                </motion.div>
+              </div>
+            </section>
+
+            <ElegantDivider />
+
             {/* Program Timeline */}
             <section className="relative py-6 px-4">
               <div className="max-w-3xl mx-auto">
@@ -511,10 +536,13 @@ export default function Home() {
 
                 <div className="space-y-8">
                   {[
-                    { image: "/images/rings.png", time: "16:00", text: t.ceremony, delay: 0.1 },
-                    { image: "/images/cutlery.png", time: "17:00", text: t.dinner, delay: 0.2 },
-                    { image: "/images/dance.png", time: "18:00", text: t.firstDance, delay: 0.3 },
-                    { image: "/images/wedding-cake.png", time: "22:00", text: t.cake, delay: 0.4 },
+                    { image: "/images/cake.png", time: "14:00", text: "Állófogadás", delay: 0.1 },
+                    { image: "/images/arch.png", time: "15:00", text: "Polgári szertartás", delay: 0.15 },
+                    { image: "/images/camera.png", time: "16:00", text: "Csoportkép és játékok", delay: 0.2 },
+                    { image: "/images/champagne.png", time: "17:45", text: "Pohárköszöntő", delay: 0.25 },
+                    { image: "/images/cutlery.png", time: "18:00", text: "Vacsora", delay: 0.3 },
+                    { image: "/images/mirror-ball.png", time: "20:00", text: "Közösségi programok, tánc", delay: 0.35 },
+                    { image: "/images/pizza.png", time: "21:00", text: "Pizza", delay: 0.4 },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
