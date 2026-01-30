@@ -539,7 +539,7 @@ export default function Home() {
 
                 <div className="space-y-8">
                   {[
-                    { image: "/images/cake.png", time: "14:00", text: "Állófogadás", delay: 0.1 },
+                    { image: "/images/muffin.png", time: "14:00", text: "Állófogadás", delay: 0.1 },
                     { image: "/images/arch.png", time: "15:00", text: "Polgári szertartás", delay: 0.15 },
                     { image: "/images/camera.png", time: "16:00", text: "Csoportkép és játékok", delay: 0.2 },
                     { image: "/images/champagne.png", time: "17:45", text: "Pohárköszöntő", delay: 0.25 },
