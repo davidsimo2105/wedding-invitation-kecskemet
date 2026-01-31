@@ -510,10 +510,34 @@ export default function Home() {
                   className="space-y-6 text-center"
                 >
                   <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
-                    Ez az alkalom számunkra különösen fontos, hiszen a szertartás után Hanna hamarosan Brassóba költözik, így ez a nap egyben lehetőség arra is, hogy szeretteinkkel és barátainkkal együtt legyünk, beszélgessünk, és elköszönjünk.
+                    {/* Mobile: specific line breaks */}
+                    <span className="block sm:hidden">
+                      Ez az alkalom számunkra
+                      <br />
+                      különösen fontos, hiszen a szertartás
+                      <br />
+                      után Hanna hamarosan Brassóba
+                      <br />
+                      költözik, így ez a nap egyben
+                      <br />
+                      lehetőség arra is, hogy szeretteinkkel
+                      <br />
+                      és barátainkkal együtt legyünk,
+                      <br />
+                      beszélgessünk, és elköszönjünk.
+                    </span>
+                    {/* Desktop: single break before beszélgessünk */}
+                    <span className="hidden sm:block">
+                      Ez az alkalom számunkra különösen fontos, hiszen a szertartás után Hanna hamarosan Brassóba költözik, így ez a nap egyben lehetőség arra is, hogy szeretteinkkel és barátainkkal együtt legyünk,{" "}
+                      <br />
+                      beszélgessünk, és elköszönjünk.
+                    </span>
                   </p>
                   <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
-                    A találkozó kötetlen, batyus jellegű lesz, ezért ha szívesen hoznátok egy kis sütit, pogácsát vagy bármilyen finomságot, azt örömmel fogadjuk.
+                    Ha szívesen hoznátok sütit, pogácsát, üdítőt vagy bármilyen finomságot, azt örömmel fogadjuk.
+                    <br />
+                    <br />
+                    Kérjük, ezt előre jelezzétek felénk, hogy tudjunk vele tervezni.
                   </p>
                   <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
                     A közös ünneplést birkapörkölt, szendvicsek, pizzaparti, játékok és tánc teszik még emlékezetesebbé.
@@ -544,6 +568,7 @@ export default function Home() {
                     { image: "/images/camera.png", time: "16:00", text: "Csoportkép és játékok", delay: 0.2 },
                     { image: "/images/champagne.png", time: "17:45", text: "Pohárköszöntő", delay: 0.25 },
                     { image: "/images/cutlery.png", time: "18:00", text: "Vacsora", delay: 0.3 },
+                    { image: "/images/gift-box.png", time: "19:00", text: "Jó kívánságok, ajándékozás", delay: 0.32 },
                     { image: "/images/mirror-ball.png", time: "20:00", text: "Közösségi programok, tánc", delay: 0.35 },
                     { image: "/images/pizza.png", time: "21:00", text: "Pizza", delay: 0.4 },
                   ].map((item, index) => (
