@@ -781,13 +781,10 @@ export default function Home() {
               </motion.div>
             </section>
 
-            {/* Physical Invitations Section */}
+            {/* Physical Invitations Section - always visible so it shows on mobile */}
             <section className="relative py-4 px-4 bg-brown">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 1, ease: smoothEase }}
+                initial={{ opacity: 1, y: 0 }}
                 className="text-center max-w-lg mx-auto"
               >
                 <p className="font-[family-name:var(--font-body)] text-sm sm:text-base md:text-lg text-white font-semibold mb-0.5 leading-tight">
