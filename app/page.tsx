@@ -540,7 +540,7 @@ export default function Home() {
                     Kérjük, ezt előre jelezzétek felénk, hogy tudjunk vele tervezni.
                   </p>
                   <p className="font-[family-name:var(--font-body)] text-xl sm:text-2xl md:text-3xl text-light-brown leading-relaxed">
-                    A közös ünneplést birkapörkölt, szendvicsek, pizzaparti, játékok és tánc teszik még emlékezetesebbé.
+                    A közös ünneplést marhapörkölt, szendvicsek, pizzaparti, játékok és tánc teszik majd még emlékezetesebbé.
                   </p>
                 </motion.div>
               </div>
